@@ -2,121 +2,279 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Rui Bo - CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rui Bo - Professional CV</title>
     <style>
+        /* Modern, professional styling */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        body, html {
-            height: 100%;
-            overflow: hidden;
-            background: #f0f2f5;
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
         
         .container {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            padding: 10px;
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
         }
         
-        .header {
-            text-align: center;
-            padding: 15px 0;
-            background: #2c3e50;
+        header {
+            background: var(--primary);
             color: white;
-            border-radius: 8px 8px 0 0;
+            padding: 30px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-weight: 300;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            display: flex;
+            min-height: 600px;
+        }
+        
+        .desktop-viewer {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .viewer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .viewer-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .download-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(26, 188, 156, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: #16a085;
+            transform: translateY(-2px);
+        }
+        
+        .pdf-container {
+            flex: 1;
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
         
         #pdf-viewer {
-            flex-grow: 1;
+            width: 100%;
+            height: 100%;
             border: none;
-            background: white;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        .mobile-warning {
+        .mobile-download {
             display: none;
+            padding: 40px;
             text-align: center;
-            padding: 15px;
-            background: #ffeaa7;
-            font-size: 14px;
+            background: #f9fbfd;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .mobile-card {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icon-container {
+            width: 100px;
+            height: 100px;
+            background: rgba(26, 188, 156, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .icon-container svg {
+            width: 50px;
+            height: 50px;
+            fill: var(--accent);
+        }
+        
+        .mobile-title {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .mobile-text {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .mobile-download-btn {
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .mobile-download-btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e6ed;
         }
         
         @media (max-width: 768px) {
-            .mobile-warning {
+            .desktop-viewer {
+                display: none;
+            }
+            
+            .mobile-download {
                 display: block;
             }
-            .container {
-                padding: 0;
+            
+            header {
+                padding: 25px 20px;
             }
-            #pdf-viewer {
-                border-radius: 0;
+            
+            h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Rui Bo - Curriculum Vitae</h1>
+        <header>
+            <h1>Rui Bo</h1>
+            <p class="subtitle">Senior Software Engineer & Product Developer</p>
+        </header>
+        
+        <div class="content">
+            <!-- Desktop PDF viewer -->
+            <div class="desktop-viewer">
+                <div class="viewer-header">
+                    <h2 class="viewer-title">Curriculum Vitae</h2>
+                    <button class="download-btn" id="desktop-download">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>
+                        Download CV
+                    </button>
+                </div>
+                <div class="pdf-container">
+                    <iframe id="pdf-viewer" src="CV.pdf#view=FitH" title="Rui Bo CV"></iframe>
+                </div>
+            </div>
+            
+            <!-- Mobile download section -->
+            <div class="mobile-download">
+                <div class="mobile-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                            <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/>
+                        </svg>
+                    </div>
+                    <h2 class="mobile-title">Download Curriculum Vitae</h2>
+                    <p class="mobile-text">For the best experience on mobile devices, we recommend downloading the PDF version of my CV. This ensures you can view all details clearly and access it offline.</p>
+                    <a href="CV.pdf" download="Rui_Bo_CV.pdf" class="mobile-download-btn">Download PDF</a>
+                </div>
+            </div>
         </div>
-        <div class="mobile-warning">
-            PREVIEW ONLY. Please download for the full view.
-        </div>
-        <iframe 
-            id="pdf-viewer"
-            src="CV.pdf#view=FitH"
-            title="Rui Bo CV"
-        ></iframe>
+        
+        <footer>
+            <p>© 2023 Rui Bo | All Rights Reserved</p>
+        </footer>
     </div>
 
     <script>
-        // Mobile height adjustment
-        function adjustViewerHeight() {
-            const header = document.querySelector('.header');
-            const warning = document.querySelector('.mobile-warning');
-            const viewer = document.getElementById('pdf-viewer');
-            
-            if (window.innerWidth <= 768) {
-                const headerHeight = header.offsetHeight;
-                const warningHeight = warning.offsetHeight;
-                viewer.style.height = `calc(100vh - ${headerHeight + warningHeight}px)`;
-            } else {
-                viewer.style.height = '100%';
+        // Add functionality to desktop download button
+        document.getElementById('desktop-download').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = 'CV.pdf';
+            link.download = 'Rui_Bo_CV.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+        
+        // Add iOS detection for special handling
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            const mobileText = document.querySelector('.mobile-text');
+            if (mobileText) {
+                mobileText.innerHTML += "<br><br><strong>iOS Tip:</strong> Tap the share icon and select 'Save to Files' for best results.";
             }
         }
-
-        // Initial adjustment
-        adjustViewerHeight();
-        
-        // Adjust on resize
-        window.addEventListener('resize', adjustViewerHeight);
-        
-        // Add download button for mobile users
-        const header = document.querySelector('.header');
-        const downloadBtn = document.createElement('a');
-        downloadBtn.innerHTML = '📥 Download';
-        downloadBtn.href = 'CV.pdf';
-        downloadBtn.download = 'Rui_Bo_CV.pdf';
-        downloadBtn.style.cssText = `
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            background: #3498db;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
-        `;
-        header.style.position = 'relative';
-        header.appendChild(downloadBtn);
     </script>
 </body>
 </html>
